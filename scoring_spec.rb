@@ -58,8 +58,6 @@ RSpec.describe Scoring do
     end
 
     context 'in Spanish' do
-      # had to make a subject that initializes with new language,
-      # maybe more helpful starting spanish tests
       let(:subject) { described_class.new(:spanish) }
       %w[A E O S I U N L R T].each do |letter|
         it "scores a #{letter} as 1 point" do
