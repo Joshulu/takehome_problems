@@ -2,7 +2,7 @@
 
 class Scoring
 
-  attr_accessor :language, :scoring_hash
+  attr_accessor :language, :scoring_hash, :word_split_regex
 
   def self.english_scoring_hash
     hash = {}
@@ -40,16 +40,16 @@ class Scoring
     else
       self.scoring_hash = SCORING_HASHES[language]
     end
+    self.word_split_regex = Regexp.new(scoring_hash.keys.reverse.join('|'))
   end
 
   def score_letter(letter)
     scoring_hash.fetch(letter.upcase.to_sym, 0)
   end
 
-  # def score_word(word)
-  #   word.gsub!(/LL|RR/, '*')
-  #   word.each_char.sum do |letter|
-  #     score_letter(letter)
-  #   end
-  # end
+  def score_word(word)
+    word.upcase.gsub(word_split_regex).sum do |letter|
+      score_letter(letter)
+    end
+  end
 end

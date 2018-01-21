@@ -180,15 +180,15 @@ RSpec.describe Scoring do
     end
   end
 
-  # describe '#score_word' do
-  #   it 'scores a word in english' do
-  #     subject = Scoring.new(:english)
-  #     expect(subject.score_word('STRRUVE')).to eq(10)
-  #   end
+  describe '#score_word' do
+    it 'scores a word in english' do
+      subject = Scoring.new(:english)
+      expect(subject.score_word('STRRUVE')).to eq(10)
+    end
 
-  #   it 'scores a word in spanish' do
-  #     subject = Scoring.new(:spanish)
-  #     expect(subject.score_word('STRRUVE')).to eq(16)
-  #   end
-  # end
+    it 'scores a word in spanish' do
+      subject = Scoring.new(:spanish)
+      expect(subject.score_word('STRRUVE')).to eq(16)
+    end
+  end
 end
